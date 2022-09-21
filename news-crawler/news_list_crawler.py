@@ -7,6 +7,9 @@ from urllib.parse import urlparse
 import json
 import boto3
 
+stop_date='20220901'
+stop_yn=False
+
 def fetch_news_list(datestr, page):
     print(f'Fetching page {page}...', end='', flush=True)
 
@@ -66,6 +69,12 @@ def fetch_news_list(datestr, page):
 
 def fetch_news_list_for_date(date):
     datestr = date.strftime('%Y%m%d')
+    global stop_yn
+    if datestr == stop_date:
+        print("!!!!!!!!! stop before fetching on " + datestr + "!!!!!!!!! ")
+        stop_yn = True
+        return
+
     print('[{}] Fetching news list on {}...'.format(dt.datetime.now(), datestr) )
 
     last_id = None
@@ -104,6 +113,8 @@ if __name__ == '__main__' :
     for d in range(300):
         date = base_date + relativedelta(days=d)
         fetch_news_list_for_date(date)
+        if(stop_yn == True):
+            break
 
 # # 전체 URL
 # https://news.naver.com/main/list.naver?mode=LSD&mid=sec&sid1=101
