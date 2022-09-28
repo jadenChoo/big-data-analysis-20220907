@@ -159,8 +159,6 @@ def extract_reporter(byline):
         return m[1], ''
     pdb.set_trace()
 
-    m = re.match(r)
-
     print("byline : "+ byline)
     return '', ''
     # pdb.set_trace()
