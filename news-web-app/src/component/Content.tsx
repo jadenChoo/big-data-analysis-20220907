@@ -3,6 +3,7 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import NewsTrendChart from './NewsTrendsChart';
 import Paper from '@mui/material/Paper';
 import SearchIcon from '@mui/icons-material/Search';
 import TextField from '@mui/material/TextField';
@@ -42,9 +43,7 @@ export default function Content() {
           </Grid>
         </Toolbar>
       </AppBar>
-      <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
-        No results found yet
-      </Typography>
+      <NewsTrendChart />
     </Paper>
   );
 }
