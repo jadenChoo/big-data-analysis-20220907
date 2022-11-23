@@ -1,6 +1,8 @@
 import * as React from 'react';
 
 import Drawer, { DrawerProps } from '@mui/material/Drawer';
+import { NEWS_TRENDS_PATH, SENTIMENT_TRENDS_PATH } from '../App';
+import {useLocation, useNavigate} from "react-router-dom";
 
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import List from '@mui/material/List';
@@ -27,6 +29,13 @@ const itemCategory = {
 
 export default function Navigator(props: DrawerProps) {
   const { ...other } = props;
+  const navigate = useNavigate();
+  const {pathname} = useLocation();
+
+  const menus = [
+    {title : "News Trends", path : NEWS_TRENDS_PATH, icon: <ShowChartIcon />},
+    {title : "Sentiments trends", path : SENTIMENT_TRENDS_PATH, icon: <FavoriteIcon />},
+  ]
 
   return (
     <Drawer variant="permanent" {...other}>
@@ -34,18 +43,14 @@ export default function Navigator(props: DrawerProps) {
         <ListItem sx={{ ...item, ...itemCategory, fontSize: 22, color: '#fff' }}>
           News Analytics
         </ListItem>
-          <ListItem sx={{p: 0}}>
-            <ListItemButton sx={item} >
-                <ListItemIcon> <ShowChartIcon /> </ListItemIcon>
-                <ListItemText> News Trends</ListItemText>
-            </ListItemButton>
+        {menus.map(({title, path, icon}) => (
+            <ListItem key={path} sx = {{p:0}}>
+              <ListItemButton sx={item} selected={pathname === path} onClick={() => { navigate(path); }}>
+                <ListItemIcon>{icon}</ListItemIcon>
+                <ListItemText>{title}</ListItemText>
+              </ListItemButton>
           </ListItem>
-          <ListItem sx={{p: 0}}>
-            <ListItemButton sx={item} >
-                <ListItemIcon> <FavoriteIcon /> </ListItemIcon>
-                <ListItemText> Sentiments trends</ListItemText>
-            </ListItemButton>
-          </ListItem>
+          ))}
       </List>
     </Drawer>
   );
