@@ -38,6 +38,9 @@ def query_news_trends(search):
 
     buckets = results['aggregations']['group_by_date']['buckets']
 
+    if len(buckets) == 0:
+        return []
+
     df = pd.DataFrame(buckets)
 
     df['date'] = df['key_as_string'].str[:10]

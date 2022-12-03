@@ -33,6 +33,6 @@ functions:
     handler: services.sentiment_trends.main
     events:
       - http:
-          path: /sentiment_trends
+          path: /sentiment-trends
           method: get
           cors: true
