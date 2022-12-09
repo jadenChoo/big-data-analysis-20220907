@@ -12,9 +12,12 @@ import SentimentTrendChart from './SentimentTrendChart';
 import TextField from '@mui/material/TextField';
 import Toolbar from '@mui/material/Toolbar';
 import {useState} from 'react';
+import { getAnalytics, logEvent } from "firebase/analytics";
+import NewsSearchResults from './NewsSearchResults';
 
 export default function Content() {
   const navigate = useNavigate();
+  const analytics = getAnalytics();
   const {pathname, search} = useLocation();
 
   const params = new URLSearchParams(search);
@@ -27,6 +30,7 @@ export default function Content() {
     if (inputText) {
       url += `?search=${inputText}`;
     }
+    logEvent(analytics, "search", {inputText});
     navigate(url);
     // setSearchText(inputText);
 
@@ -79,7 +83,9 @@ export default function Content() {
           <NewsTrendChart search={searchText} />
         )
         : (
-          <SentimentTrendChart search={searchText} />
+          pathname === '/news-search'?
+          <NewsSearchResults search={searchText} />
+          :<SentimentTrendChart search={searchText} />
         )
       }
       

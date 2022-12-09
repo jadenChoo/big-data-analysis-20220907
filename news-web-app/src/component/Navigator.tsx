@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Drawer, { DrawerProps } from '@mui/material/Drawer';
-import { NEWS_TRENDS_PATH, SENTIMENT_TRENDS_PATH } from '../App';
+import {NEWS_SEARCH_PATH, NEWS_TRENDS_PATH, SENTIMENT_TRENDS_PATH } from '../App';
 import {useLocation, useNavigate} from "react-router-dom";
 
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -11,6 +11,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
+import FindInPageIcon from "@mui/icons-material/FindInPage";
 
 const item = {
   py: 2,
@@ -30,9 +31,10 @@ const itemCategory = {
 export default function Navigator(props: DrawerProps) {
   const { ...other } = props;
   const navigate = useNavigate();
-  const {pathname} = useLocation();
+  const {pathname,search} = useLocation();
 
   const menus = [
+    { title: "News Search", path: NEWS_SEARCH_PATH, icon: <FindInPageIcon /> },
     {title : "News Trends", path : NEWS_TRENDS_PATH, icon: <ShowChartIcon />},
     {title : "Sentiments trends", path : SENTIMENT_TRENDS_PATH, icon: <FavoriteIcon />},
   ]
@@ -45,7 +47,7 @@ export default function Navigator(props: DrawerProps) {
         </ListItem>
         {menus.map(({title, path, icon}) => (
             <ListItem key={path} sx = {{p:0}}>
-              <ListItemButton sx={item} selected={pathname === path} onClick={() => { navigate(path); }}>
+              <ListItemButton sx={item} selected={pathname === path} onClick={() => { navigate(path + search); }}>
                 <ListItemIcon>{icon}</ListItemIcon>
                 <ListItemText>{title}</ListItemText>
               </ListItemButton>

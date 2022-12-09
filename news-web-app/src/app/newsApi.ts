@@ -13,10 +13,13 @@ export const newsApi = createApi({
         }),
         getSentimentTrends:builder.query<t.SentimentTrends,t.SearchReqParams>({
             query:({search}) => `sentiment-trends?search=${search}`,
+        }),
+        searchNewsResults:builder.query<t.NewsSearch,t.NewsSearchReqParams>({
+            query:({search}) => `news-search?search=${search}`,
         })
     }),
 });
 
 export const {
-    useGetNewsTrendsQuery, useGetSentimentTrendsQuery
+    useGetNewsTrendsQuery, useGetSentimentTrendsQuery, useSearchNewsResultsQuery
 } = newsApi;

@@ -36,3 +36,10 @@ functions:
           path: /sentiment-trends
           method: get
           cors: true
+  news_search:
+    handler: services.news_search.main
+    events:
+      - http:
+          path: /news-search
+          method: get
+          cors: true
