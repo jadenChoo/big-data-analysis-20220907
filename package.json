@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@types/react-plotly.js": "^2.5.2",
+    "firebase": "^9.15.0",
+    "plotly.js": "^2.16.3",
+    "react-plotly.js": "^2.6.0"
+  }
+}

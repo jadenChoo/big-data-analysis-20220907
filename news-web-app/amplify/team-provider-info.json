@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-newswebapp-dev-140254-authRole",
+      "UnauthRoleArn": "arn:aws:iam::337621528656:role/amplify-newswebapp-dev-140254-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::337621528656:role/amplify-newswebapp-dev-140254-authRole",
+      "Region": "ap-northeast-2",
+      "DeploymentBucketName": "amplify-newswebapp-dev-140254-deployment",
+      "UnauthRoleName": "amplify-newswebapp-dev-140254-unauthRole",
+      "StackName": "amplify-newswebapp-dev-140254",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:337621528656:stack/amplify-newswebapp-dev-140254/1a40eeb0-617e-11ed-a6ee-02b5286bba0e",
+      "AmplifyAppId": "dds5ptqhvqupt"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "dds5ptqhvqupt",
+          "type": "manual"
+        }
+      }
+    }
+  }
+}
