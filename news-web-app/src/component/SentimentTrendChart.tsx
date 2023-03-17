@@ -45,23 +45,6 @@ export default function SentimentTrendChart({search}:IProps) {
         
         }
     }
-
-    // const trace: Plotly.Data={
-    //     x: data.trends.map(el => el.date),
-    //     y: data.trends.map(el => el.positive),
-    //     type: 'scatter',
-    //     mode: 'lines+markers',
-    // }
-
-
-    // const traces: Plotly.Data[] = ["positive", "neutral", "negative"].map(x=> ({
-    //     x: data.trends.map(el => el.date),
-    //     y: data.trends.map(el => (el as any)[x]),
-    //     type: 'scatter',
-    //     mode: 'lines+markers',
-    //     name: x,
-    // }))
-
     return (
         
         <Box sx={{display: "grid", pt: 3}}>
